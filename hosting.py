@@ -1177,7 +1177,10 @@ if st.session_state.active_tab == 0:
             # Calculate start and end indices
             start_idx = (st.session_state.current_page - 1) * rows_per_page
             end_idx = min(start_idx + rows_per_page, total_rows)
-            df_paginated = df_display.iloc[start_idx:end_idx]
+            df_paginated = df_display.iloc[start_idx:end_idx].copy()
+            
+            # Tambahkan kolom nomor urut yang kontinyu
+            df_paginated.insert(0, 'No', range(start_idx + 1, end_idx + 1))
         
         with col_page2:
             if rows_per_page != "All" and total_pages > 1:
