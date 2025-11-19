@@ -1166,7 +1166,9 @@ if st.session_state.active_tab == 0:
         # Calculate total pages
         if rows_per_page == "All":
             total_pages = 1
-            df_paginated = df_display
+            df_paginated = df_display.copy()
+            # Tambahkan kolom nomor urut
+            df_paginated.insert(0, 'No', range(1, len(df_paginated) + 1))
         else:
             total_pages = max(1, (total_rows + rows_per_page - 1) // rows_per_page)
             
@@ -1179,8 +1181,8 @@ if st.session_state.active_tab == 0:
             end_idx = min(start_idx + rows_per_page, total_rows)
             df_paginated = df_display.iloc[start_idx:end_idx].copy()
             
-            # Tambahkan kolom nomor urut yang kontinyu
-            df_paginated.insert(0, 'No', range(start_idx + 1, end_idx + 1))
+            # # Tambahkan kolom nomor urut yang kontinyu
+            # df_paginated.insert(0, 'No', range(start_idx + 1, end_idx + 1))
         
         with col_page2:
             if rows_per_page != "All" and total_pages > 1:
@@ -1231,7 +1233,7 @@ if st.session_state.active_tab == 0:
                         "selector": "thead th",
                         "props": [
                             ("background-color", "#4CAF50"),
-                            ("color", "#ffffff"),
+                            ("color", "#000000"),
                             ("font-weight", "bold"),
                             ("text-align", "center"),
                             ("padding", "12px 8px"),
@@ -1261,6 +1263,7 @@ if st.session_state.active_tab == 0:
                             ("white-space", "nowrap"),
                         ],
                     },
+
                     {
                         "selector": "table",
                         "props": [
