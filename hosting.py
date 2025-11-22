@@ -2187,25 +2187,25 @@ elif st.session_state.active_tab == 4:
             )
             st.plotly_chart(fig5, use_container_width=True)
 
-        with col6:
-            st.markdown("#### 🗂️ Server Hierarchy (Site → Rack → Host)")
-            fig6 = px.treemap(
-                df_analytics,
-                path=["SITE", "RACK", "HOSTNAME"],
-                color="STATUS",
-                color_discrete_map={"Active": "#00E676", "Inactive": "#FF5252"},
-                height=350,
-            )
-            fig6.update_layout(
-                margin=dict(l=10, r=10, t=30, b=10),
-                paper_bgcolor="rgba(0,0,0,0)",
-                font=dict(color="#FFFFFF", size=11),
-            )
-            fig6.update_traces(
-                textfont=dict(size=12, color="#FFFFFF"),
-                marker=dict(line=dict(color="#FFFFFF", width=2)),
-            )
-            st.plotly_chart(fig6, use_container_width=True)
+        # with col6:
+        #     st.markdown("#### 🗂️ Server Hierarchy (Site → Rack → Host)")
+        #     fig6 = px.treemap(
+        #         df_analytics,
+        #         path=["SITE", "RACK", "HOSTNAME"],
+        #         color="STATUS",
+        #         color_discrete_map={"Active": "#00E676", "Inactive": "#FF5252"},
+        #         height=350,
+        #     )
+        #     fig6.update_layout(
+        #         margin=dict(l=10, r=10, t=30, b=10),
+        #         paper_bgcolor="rgba(0,0,0,0)",
+        #         font=dict(color="#FFFFFF", size=11),
+        #     )
+        #     fig6.update_traces(
+        #         textfont=dict(size=12, color="#FFFFFF"),
+        #         marker=dict(line=dict(color="#FFFFFF", width=2)),
+        #     )
+        #     st.plotly_chart(fig6, use_container_width=True)
 
         # Row 4: Role and Rack Distribution
         col7, col8 = st.columns(2)
@@ -2235,36 +2235,36 @@ elif st.session_state.active_tab == 4:
             )
             st.plotly_chart(fig7, use_container_width=True)
 
-        with col8:
-            st.markdown("#### 🗄️ Top 10 Racks by Device Count")
-            rack_count = df_analytics["RACK"].value_counts().head(10).reset_index()
-            rack_count.columns = ["RACK", "COUNT"]
-            fig8 = px.bar(
-                rack_count,
-                y="RACK",
-                x="COUNT",
-                orientation='h',
-                color="COUNT",
-                color_continuous_scale=[[0, "#4ECDC4"], [0.5, "#45B7D1"], [1, "#FF6B6B"]],
-                height=350,
-                text="COUNT",
-            )
-            fig8.update_traces(
-                texttemplate='%{text}',
-                textposition='auto',
-                marker_line_color="#FFFFFF",
-                marker_line_width=1.5
-            )
-            fig8.update_layout(
-                showlegend=False,
-                margin=dict(l=100, r=10, t=30, b=50),
-                paper_bgcolor="rgba(0,0,0,0)",
-                plot_bgcolor="rgba(0,0,0,0)",
-                xaxis=dict(gridcolor="#333333", color="#FFFFFF", title="Device Count"),
-                yaxis=dict(gridcolor="#333333", color="#FFFFFF", title=""),
-                font=dict(color="#FFFFFF", size=11),
-            )
-            st.plotly_chart(fig8, use_container_width=True)
+        # with col8:
+        #     st.markdown("#### 🗄️ Top 10 Racks by Device Count")
+        #     rack_count = df_analytics["RACK"].value_counts().head(10).reset_index()
+        #     rack_count.columns = ["RACK", "COUNT"]
+        #     fig8 = px.bar(
+        #         rack_count,
+        #         y="RACK",
+        #         x="COUNT",
+        #         orientation='h',
+        #         color="COUNT",
+        #         color_continuous_scale=[[0, "#4ECDC4"], [0.5, "#45B7D1"], [1, "#FF6B6B"]],
+        #         height=350,
+        #         text="COUNT",
+        #     )
+        #     fig8.update_traces(
+        #         texttemplate='%{text}',
+        #         textposition='auto',
+        #         marker_line_color="#FFFFFF",
+        #         marker_line_width=1.5
+        #     )
+        #     fig8.update_layout(
+        #         showlegend=False,
+        #         margin=dict(l=100, r=10, t=30, b=50),
+        #         paper_bgcolor="rgba(0,0,0,0)",
+        #         plot_bgcolor="rgba(0,0,0,0)",
+        #         xaxis=dict(gridcolor="#333333", color="#FFFFFF", title="Device Count"),
+        #         yaxis=dict(gridcolor="#333333", color="#FFFFFF", title=""),
+        #         font=dict(color="#FFFFFF", size=11),
+        #     )
+        #     st.plotly_chart(fig8, use_container_width=True)
 
         # Row 5: Status by Site and Site Distribution
         col9, col10 = st.columns(2)
