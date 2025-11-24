@@ -1245,13 +1245,13 @@ if st.session_state.active_tab == 0:
                     {
                         "selector": "tbody tr:nth-child(even)",
                         "props": [
-                            ("background-color", "#000000"),
+                            ("background-color", "#ffffff"),
                         ],
                     },
                     {
                         "selector": "tbody tr:nth-child(odd)",
                         "props": [
-                            ("background-color", "#000000"),
+                            ("background-color", "#ffffff"),
                         ],
                     },
                     {
