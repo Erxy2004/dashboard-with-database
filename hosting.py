@@ -2208,7 +2208,7 @@ elif st.session_state.active_tab == 4:
             st.plotly_chart(fig6, use_container_width=True)
 
         # Row 4: Role and Rack Distribution
-        col7, col8 = st.columns(2)r
+        col7, col8 = st.columns(2)
         with col7:
             st.markdown("#### 👔 Role Distribution")
             role_count = df_analytics["ROLE"].value_counts().reset_index()
